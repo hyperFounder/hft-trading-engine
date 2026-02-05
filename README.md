@@ -9,6 +9,16 @@ A low-latency, multithreaded trading execution engine built with **Spring Boot 3
 * **Asynchronous Processing:** Decouples order ingestion from execution using `CompletableFuture` and non-blocking I/O.
 * **Numerical Precision:** Uses `BigDecimal` exclusively for financial arithmetic to avoid floating-point rounding errors.
 
+**Build & Run**
+
+1. Build: ```mvn clean install```
+
+2. Start the application: ```mvn spring-boot:run```. The server will start on: ```http://localhost:8080```
+
+## Interactive API Documentation (Swagger UI)
+
+- Once the application is running, open your browser and go to: ```http://localhost:8080/swagger-ui/index.html``` to explore all endpoints
+
 ## API Endpoints
 
 ### Execute Trade
