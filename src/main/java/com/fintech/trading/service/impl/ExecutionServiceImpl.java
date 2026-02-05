@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 public class ExecutionServiceImpl implements ExecutionService {
 
     private final PortfolioRepository portfolioRepository;
-    private final AssetRepository assetRepository;  // <--- NEW: Need this to get prices
+    private final AssetRepository assetRepository;
     private final MessageSource messageSource;
 
     public ExecutionServiceImpl(PortfolioRepository portfolioRepository,

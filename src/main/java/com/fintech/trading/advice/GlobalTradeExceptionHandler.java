@@ -29,13 +29,11 @@ public class GlobalTradeExceptionHandler {
         return buildResponse(HttpStatus.PAYMENT_REQUIRED, errorCode, errorMsg);
     }
 
-    // --- NEW: Catch Missing Messages ---
     @ExceptionHandler(NoSuchMessageException.class)
     public ResponseEntity<Object> handleMissingMessage(NoSuchMessageException ex) {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "ERR_CONFIG", "Missing message key in properties file: " + ex.getMessage());
     }
 
-    // --- NEW: Catch Everything Else ---
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneric(Exception ex) {
         ex.printStackTrace(); // Print stack trace to console for debugging
@@ -51,7 +49,6 @@ public class GlobalTradeExceptionHandler {
         return new ResponseEntity<>(body, status);
     }
 
-    // Helper to safely get messages without crashing
     private String getMessage(String code, String defaultMsg) {
         try {
             return messageSource.getMessage(code, null, LocaleContextHolder.getLocale());

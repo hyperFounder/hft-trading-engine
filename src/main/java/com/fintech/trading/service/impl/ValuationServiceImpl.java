@@ -32,7 +32,6 @@ public class ValuationServiceImpl implements ValuationService {
         Map<String, BigDecimal> distribution = new HashMap<>();
 
         for (Portfolio p : holdings) {
-            // In a real system, you would batch fetch prices or use a cache
             Asset asset = assetRepository.findById(p.getAssetSymbol()).orElse(null);
             BigDecimal price = (asset != null) ? asset.getPrice() : BigDecimal.ZERO;
 
