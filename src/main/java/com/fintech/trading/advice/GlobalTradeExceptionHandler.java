@@ -1,5 +1,6 @@
 package com.fintech.trading.advice;
 
+import com.fintech.trading.exception.IdempotencyKeyMissingException;
 import com.fintech.trading.exception.InsufficientFundsException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
@@ -27,6 +28,13 @@ public class GlobalTradeExceptionHandler {
         String errorCode = getMessage("error.code.liquidity", "ERR_LIQUIDITY");
         String errorMsg = getMessage("error.msg.liquidity", new Object[]{ex.getMessage()}, ex.getMessage());
         return buildResponse(HttpStatus.PAYMENT_REQUIRED, errorCode, errorMsg);
+    }
+
+    @ExceptionHandler(IdempotencyKeyMissingException.class)
+    public ResponseEntity<Object> handleIdempotencyMissing(IdempotencyKeyMissingException ex) {
+        String errorCode = getMessage("error.code.idempotency_missing", "ERR_IDEMPOTENCY_REQUIRED");
+        String errorMsg = getMessage("error.msg.idempotency_missing", new Object[]{"X-Idempotency-Key"}, ex.getMessage());
+        return buildResponse(HttpStatus.BAD_REQUEST, errorCode, errorMsg);
     }
 
     @ExceptionHandler(NoSuchMessageException.class)
