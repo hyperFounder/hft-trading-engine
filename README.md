@@ -37,3 +37,12 @@ A low-latency, multithreaded trading execution engine built with **Spring Boot 3
 
 ### View Portfolio
 GET ```/api/v1/trading/portfolio/{userId}```
+
+
+### Testing Idempotency
+A bash script is provided to verify the exactly-once execution logic:
+
+```chmod +x test_idempotency.sh```
+`````./test_idempotency.sh```
+``
+This script verifies that the engine processes a specific trade exactly once by simulating a network retry and confirming that the user's balance is only deducted once, despite receiving multiple identical requests.
