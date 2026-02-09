@@ -1,5 +1,6 @@
 package com.fintech.trading.controller;
 
+import com.fintech.trading.advice.Idempotent;
 import com.fintech.trading.dto.OrderRequest;
 import com.fintech.trading.dto.PortfolioSummary;
 import com.fintech.trading.service.ExecutionService;
@@ -21,8 +22,8 @@ public class TradeController {
     }
 
     @PostMapping("/execute")
+    @Idempotent
     public CompletableFuture<ResponseEntity<String>> executeOrder(@RequestBody OrderRequest request) {
-        // Controller delegates to service immediately, freeing up the thread
         return executionService.executeMarketOrder(request)
                 .thenApply(ResponseEntity::ok);
     }
