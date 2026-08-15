@@ -34,7 +34,6 @@ A low-latency, multithreaded trading execution engine built with **Spring Boot 3
   "quantity":   0.05        // number  - Quantity to buy in base asset
 }
 ```
-
 ### View Portfolio
 GET ```/api/v1/trading/portfolio/{userId}```
 
