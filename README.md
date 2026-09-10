@@ -3,7 +3,6 @@
 ## Project Summary
 A low-latency, multithreaded trading execution engine built with **Spring Boot 3**. This system simulates a High-Frequency Trading (HFT) environment, utilizing pessimistic locking and asynchronous processing to ensure strict ACID compliance and thread safety under intense concurrency.
 
-
 ## Core Technical Features
 * **Concurrency Control:** Implements `PESSIMISTIC_WRITE` database locking to serialize concurrent ledger updates and prevent race conditions.
 * **Asynchronous Processing:** Decouples order ingestion from execution using `CompletableFuture` and non-blocking I/O.
