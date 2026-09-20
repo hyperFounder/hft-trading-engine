@@ -1,6 +1,6 @@
 # HFT Trading Execution Engine 
 
-## Project Summary
+## Project Summars
 A low-latency, multithreaded trading execution engine built with **Spring Boot 3**. This system simulates a High-Frequency Trading (HFT) environment, utilizing pessimistic locking and asynchronous processing to ensure strict ACID compliance and thread safety under intense concurrency.
 
 ## Core Technical Features
